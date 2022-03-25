@@ -33,6 +33,12 @@
   text-decoration: none;
 }
 
+.footer span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title a:hover,
 .title a:focus,
 .title a:active {

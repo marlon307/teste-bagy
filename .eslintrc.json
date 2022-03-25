@@ -1,3 +1,28 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "default-param-last": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-use-before-define": "off",
+    // "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-spacing": [2, {"when": "always", "spacing": {
+      "objectLiterals": "always"
+    }}],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
+  }
 }
