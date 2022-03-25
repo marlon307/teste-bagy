@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  list-style: none;
+  font-family: Arial, helvetica, sans-serif;
+  text-decoration: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  --main-color: #fff;
+  --title-color: #252733;
+  --border-coor: #DFE0EB;
+}
