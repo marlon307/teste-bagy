@@ -1,3 +1,10 @@
+.footermain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+}
+
 .boxtotalbuy,
 .boxproduct {
   max-width: 600px;
@@ -96,7 +103,7 @@
     width: 100%;
     display: block;
     overflow-y: scroll;
-    max-height: 250px;
+    max-height: 304px;
 
     td {
       padding: 1em 0 1em 2em;
