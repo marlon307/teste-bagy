@@ -1,8 +1,14 @@
 import React from 'react';
+import style from './style.module.scss';
 
 function Graphy() {
   return (
-    <div>Graphy</div>
+    <section className={ style.dashboard }>
+      dfsd
+      <div>
+        Mnu
+      </div>
+    </section>
   );
 }
 
