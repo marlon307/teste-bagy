@@ -29,10 +29,24 @@
     color: var(--title-color);
   }
 
-  span:last-child {
+  span {
     font-size: 1em;
     font-weight: 500;
     color: var(--color-bagy);
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: relative;
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-left: 2px solid var(--color-bagy);
+      border-bottom: 2px solid var(--color-bagy);
+      right: -6px;
+      top: -3px;
+      transform: rotateZ(315deg);
+    }
   }
 }
 
