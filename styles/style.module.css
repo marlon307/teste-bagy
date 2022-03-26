@@ -2,11 +2,10 @@
 .container {
   display: grid;
   grid-template-areas:
-    "n m m"
-    "n c c"
-    "n c c"
-    "n f f"
-  ;
+    "n m"
+    "n c"
+    "n c"
+    "n f";
   grid-template-columns: minmax(250px, 350px) auto;
 }
 
