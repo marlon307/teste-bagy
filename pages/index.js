@@ -5,6 +5,8 @@ import style from '../styles/style.module.css';
 import Header from '../components/Header/Header';
 import Nav from '../components/Header/Nav';
 import MainHeader from '../components/Main/MainHeader';
+import Graphy from '../components/Main/MainGrapyh';
+import FooterMain from '../components/Main/MainFooter';
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
 
       <main className={ style.main }>
         <MainHeader />
+        <Graphy />
+        <FooterMain />
       </main>
 
       <footer className={ style.footer }>

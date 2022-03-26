@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2em;
   flex-wrap: wrap;
 }
@@ -15,25 +15,25 @@
   min-width: 250px;
   gap: 1em;
   padding: 1em;
-  border: 2px solid #DFE0EB;
+  border: 2px solid var(--color-border);
   transition: color 0.2s linear;
   border-radius: 8px;
   cursor: pointer;
 
   h4 {
-    color: #9FA2B4;
+    color: var(--color-h4-text-box);
     font-size: 1em;
     transition: color 0.2s linear;
   }
 
   h2 {
-    color: #252733;
+    color: var(--title-color);
     font-size: 2.2em;
     transition: color 0.2s linear;
   }
 
   &:hover {
-    border: 2px solid #DDE2FF;
+    border: 2px solid var(--color-border-hv);
   }
 
   &:hover * {
@@ -45,10 +45,10 @@
   border: none;
 
   h4 {
-    color: #9FA2B4;
+    color: var(--color-h4-text-box);
   }
 
   h2 {
-    color: #252733;
+    color: var(--title-color);
   }
 }
