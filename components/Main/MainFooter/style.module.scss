@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 3em;
 }
 
@@ -14,7 +15,7 @@
 }
 
 .headerbox {
-  padding: 3em 2em 0;
+  padding: 2em 2em 0;
 }
 
 .primaryLine {
@@ -23,7 +24,7 @@
   justify-content: space-between;
 
   h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 600;
     color: var(--title-color);
   }
@@ -46,14 +47,13 @@
 
 .mainbox {
   width: 100%;
-  max-height: 250px;
+  max-height: 350px;
   overflow: hidden;
-  padding: 16px 0;
 
   ul {
     margin-top: 12px;
     overflow: auto;
-    max-height: 250px;
+    max-height: 290px;
   }
 
   li {
@@ -94,7 +94,8 @@
 
     th {
       text-align: left;
-      padding: 2em 2em 2em;
+      padding: 1.66em 2em 1em;
+      font-size: 1.2em;
     }
   }
 
