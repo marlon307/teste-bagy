@@ -1,0 +1,54 @@
+.mainheader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  gap: 1em;
+  padding: 1em;
+  border: 2px solid #DFE0EB;
+  transition: color 0.2s linear;
+  border-radius: 8px;
+  cursor: pointer;
+
+  h4 {
+    color: #9FA2B4;
+    font-size: 1em;
+    transition: color 0.2s linear;
+  }
+
+  h2 {
+    color: #252733;
+    font-size: 2.2em;
+    transition: color 0.2s linear;
+  }
+
+  &:hover {
+    border: 2px solid #DDE2FF;
+  }
+
+  &:hover * {
+    color: var(--color-bagy);
+  }
+}
+
+.box:first-child {
+  border: none;
+
+  h4 {
+    color: #9FA2B4;
+  }
+
+  h2 {
+    color: #252733;
+  }
+}
