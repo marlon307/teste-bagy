@@ -1,8 +1,11 @@
 import React from 'react';
+import BoxTotalBuy from './BoxTotalBuy';
 
 function FooterMain() {
   return (
-    <section>FooterContent</section>
+    <section>
+      <BoxTotalBuy />
+    </section>
   );
 }
 
