@@ -1,24 +1,24 @@
-/* n Navegação, m Menu, c Conteudo */
-.contmn {
+/* n Navegação, m Menu, c Conteudo, f Footer */
+.container {
   display: grid;
-  grid-template-areas: 
-  "n m m"
-  "n c c"
-  "n c c"
+  grid-template-areas:
+    "n m m"
+    "n c c"
+    "n c c"
+    "n f f"
   ;
+  grid-template-columns: minmax(250px, 350px) auto;
 }
 
 .main {
   min-height: 100vh;
-  /* padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+  grid-area: c;
+
+  padding: 1em 2em;
 }
 
 .footer {
+  grid-area: f;
   display: flex;
   flex: 1;
   padding: 2rem 0;
