@@ -6,11 +6,14 @@ import style from './style.module.scss';
 function Nav() {
   return (
     <nav className={ style.nav }>
-      <div>
-        <Svg nameSvg="logoBagy" />
-        <h2>
-          sd
-        </h2>
+      <div className={ style.logo }>
+        <Svg nameSvg="logo" />
+        <div>
+          <h2>
+            Dashboard
+          </h2>
+          <h2>Bagy</h2>
+        </div>
       </div>
       <ul>
         <li>

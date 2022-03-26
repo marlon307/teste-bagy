@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import style from '../styles/Home.module.css';
+import style from '../styles/style.module.css';
 import Header from '../components/Header/Header';
 import Nav from '../components/Header/Nav';
 
@@ -14,10 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={ style.contmn }>
-        <Nav />
-        <Header />
-      </div>
+      <Nav />
+      <Header />
 
       <main className={ style.main }>
         ljk
@@ -30,7 +28,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Bagy
-          {' '}
+          { ' ' }
           <span className={ style.logo }>
             <Image src="/bagyicon.svg" alt="Vercel Logo" width={ 32 } height={ 32 } />
           </span>
