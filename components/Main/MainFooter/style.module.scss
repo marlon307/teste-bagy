@@ -1,4 +1,66 @@
 .boxtotalbuy {
+  max-width: 600px;
+  border-radius: 8px;
+  border: 2px solid var(--color-border);
+}
+
+.headerbox {
+  padding: 3em 2em 0;
+}
+
+.primaryLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--title-color);
+  }
+
+  span:last-child {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--color-bagy);
+  }
+}
+
+.secondaryLine {
+  margin-top: 12px;
+
+  span {
+    color: var(--color-secondaryline-box);
+    font-weight: 600;
+  }
+}
+
+.mainbox {
   width: 100%;
-  background: #333;
+
+  ul {
+    margin-top: 12px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4em 2em;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  li:last-child {
+    border: none;
+  }
+
+  span {
+    width: 170px;
+    color: var(--title-color);
+  }
+
+  span:nth-child(1n+2) {
+    color: var(--color-h4-text-box);
+    text-align: end;
+  }
 }
