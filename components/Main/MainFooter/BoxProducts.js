@@ -25,7 +25,7 @@ function BoxProducts() {
             </td>
           </tr>
           <tr>
-            <td>Brincos #023</td>
+            <td>Conjunto #023</td>
             <td>Estilo Pri</td>
             <td>
               <span className={ style.tbprice }>R$ 29,90</span>
@@ -35,8 +35,18 @@ function BoxProducts() {
             </td>
           </tr>
           <tr>
-            <td>Brincos #023</td>
-            <td>Estilo Pri</td>
+            <td>Body #077</td>
+            <td>Mary Lingerie</td>
+            <td>
+              <span className={ style.tbprice }>R$ 29,90</span>
+            </td>
+            <td>
+              <span className={ style.tbdate }>17/07/20</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Sandália #023</td>
+            <td>Mary Lingerie</td>
             <td>
               <span className={ style.tbprice }>R$ 29,90</span>
             </td>
@@ -46,17 +56,7 @@ function BoxProducts() {
           </tr>
           <tr>
             <td>Brincos #023</td>
-            <td>Estilo Pri</td>
-            <td>
-              <span className={ style.tbprice }>R$ 29,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Brincos #023</td>
-            <td>Estilo Pri</td>
+            <td>Vilma Calçados</td>
             <td>
               <span className={ style.tbprice }>R$ 29,90</span>
             </td>

@@ -10,6 +10,7 @@
   max-width: 600px;
   border-radius: 8px;
   border: 2px solid var(--color-border);
+  min-height: 390px;
 }
 
 .headerbox {
@@ -82,11 +83,9 @@
 // https://stackoverflow.com/questions/23989463/how-to-set-tbody-height-with-overflow-scroll
 // http://jsfiddle.net/c3w6hgr0/6/
 .table {
-  // display: table;
   width: 100%;
 
   thead {
-    // text-align: left;
     color: var(--title-color);
     border: none;
     display: table;
@@ -102,8 +101,10 @@
   tbody {
     width: 100%;
     display: block;
+    overflow: auto;
     overflow-y: scroll;
     max-height: 304px;
+    min-height: 308px;
 
     td {
       padding: 1em 0 1em 2em;
