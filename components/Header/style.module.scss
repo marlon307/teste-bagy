@@ -78,12 +78,13 @@
 
 .nav {
   grid-area: n;
-  background: #363740;
+  background: var(--color-bg-nav-mn);
   height: 100%;
 
   svg {
-    fill: #9FA2B4;
-    // stroke: #9FA2B4;
+    fill: var(--color-fill-svg-nav);
+    width: 18px;
+    height: 18px;
   }
 
   ul {
@@ -97,17 +98,23 @@
     align-items: center;
 
     &:hover {
-      background: #463746;
+      background: var(--color-nav-hover-mn);
 
       &::before {
         content: '';
         position: absolute;
         width: 3px;
         height: 100%;
-        background: #FC3C8D;
+        background: var(--color-bagy);
         display: inline-block;
         left: 0;
       }
+    }
+  }
+
+  li:nth-child(4) {
+    &:hover path {
+      stroke: var(--main-color);
     }
   }
 
@@ -118,14 +125,14 @@
     justify-content: flex-start;
     gap: 1em;
     padding: 1.4em 2em;
-    color: #A4A6B3;
+    color: var(--color-text-mn);
 
     &:hover {
       color: var(--main-color);
     }
 
-    &:hover * {
-      fill: rgb(255, 255, 255);
+    &:hover path {
+      fill: var(--main-color);
     }
   }
 }

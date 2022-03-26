@@ -1,15 +1,17 @@
-/* n Navegação, m Menu, c Conteudo */
+/* n Navegação, m Menu, c Conteudo, f Footer */
 .contmn {
   display: grid;
-  grid-template-areas: 
-  "n m m"
-  "n c c"
-  "n c c"
+  grid-template-areas:
+    "n m m"
+    "n c c"
+    "n c c"
+    "f f f"
   ;
 }
 
 .main {
   min-height: 100vh;
+  grid-area: c c;
   /* padding: 4rem 0;
   flex: 1;
   display: flex;
