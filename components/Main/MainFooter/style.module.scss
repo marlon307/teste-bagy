@@ -72,7 +72,8 @@
 }
 
 //  Table Producs Sales
-
+// https://stackoverflow.com/questions/23989463/how-to-set-tbody-height-with-overflow-scroll
+// http://jsfiddle.net/c3w6hgr0/6/
 .table {
   // display: table;
   width: 100%;
@@ -81,16 +82,14 @@
     // text-align: left;
     color: var(--title-color);
     border: none;
-    display: flex;
+    display: table;
     table-layout: fixed;
+    width: 100%;
 
-    tr {
-      width: 100%;
+    th {
+      text-align: left;
+      padding: 2em 2em 2em;
     }
-  }
-
-  th {
-    padding: 2em 2em 2em;
   }
 
   td {

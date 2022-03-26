@@ -8,14 +8,8 @@ function BoxProducts() {
         <thead>
           <tr>
             <th>Produto</th>
-          </tr>
-          <tr>
             <th>Loja</th>
-          </tr>
-          <tr>
             <th>Preço</th>
-          </tr>
-          <tr>
             <th>Data</th>
           </tr>
         </thead>
