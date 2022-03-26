@@ -36,6 +36,33 @@
   }
 }
 
+.infographyc {
+  display: flex;
+  gap: 3em;
+
+  span {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 22px;
+      height: 4px;
+      top: 6px;
+      left: -28px;
+      background: var(--color-bagy);
+      border-radius: 6px;
+    }
+  }
+
+  span:last-child {
+    &:before {
+      background: var(--color-border);
+    }
+  }
+}
+
 .chart {
   grid-area: g;
 }

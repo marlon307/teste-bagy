@@ -18,8 +18,9 @@ function Graphy() {
         </div>
         <div className={ style.secondaryline }>
           <span>JULHO 2020</span>
-          <div>
-            <span>DS</span>
+          <div className={ style.infographyc }>
+            <span>Este mês</span>
+            <span>Mês passado</span>
           </div>
         </div>
       </div>
