@@ -26,4 +26,25 @@
   --color-border-hv: #DDE2FF;
   --color-h4-text-box: #9FA2B4;
   --color-secondaryline-box: #2F80ED;
+  --color-tb-bx-product: #677371;
+  --color-date-bx-product: #FEC400;
+  --color-price-bx-product: #2F80ED;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 5px;
+  background: var(--color-border);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bagy);
+  border-radius: 5px;
 }
