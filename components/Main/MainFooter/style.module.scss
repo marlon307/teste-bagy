@@ -92,10 +92,6 @@
     }
   }
 
-  td {
-    padding: 1em 0 1em 2em;
-  }
-
   tbody {
     width: 100%;
     display: block;
@@ -103,6 +99,7 @@
     max-height: 250px;
 
     td {
+      padding: 1em 0 1em 2em;
       color: var(--color-tb-bx-product);
       border-bottom: 2px solid var(--color-border);
     }
@@ -112,11 +109,11 @@
       display: table;
       table-layout: fixed;
     }
-  }
 
-  tr:last-child {
-    td {
-      border: none;
+    tr:last-child {
+      td {
+        border: none;
+      }
     }
   }
 }
@@ -127,7 +124,6 @@
   color: var(--main-color);
   border-radius: 12px;
   font-weight: 600;
-  // width: 50%;
   text-align: center;
   display: inline-block;
 }
