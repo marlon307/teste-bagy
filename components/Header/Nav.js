@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Svg from '../../assets/Svg';
 import style from './style.module.scss';
 
 function Nav() {
+  const router = useRouter();
+  const [pathName, setPathName] = useState([]);
+  useEffect(() => {
+    setPathName(router.pathname);
+  }, [router]);
+
   return (
     <nav className={ style.nav }>
       <div className={ style.logo }>
@@ -16,7 +23,7 @@ function Nav() {
         </div>
       </div>
       <ul>
-        <li>
+        <li data-active={ pathName === '/' }>
           <Link href="/">
             <a>
               <Svg nameSvg="vision" />
@@ -25,7 +32,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/loja' }>
           <Link href="/loja">
             <a>
               <Svg nameSvg="store" />
@@ -34,7 +41,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/vendas' }>
           <Link href="/vendas">
             <a>
               <Svg nameSvg="sales" />
@@ -43,7 +50,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/clientes' }>
           <Link href="/clientes">
             <a>
               <Svg nameSvg="clients" />
@@ -52,7 +59,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/produtos' }>
           <Link href="/produtos">
             <a>
               <Svg nameSvg="products" />
@@ -61,7 +68,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/metas' }>
           <Link href="/metas">
             <a>
               <Svg nameSvg="plans" />
@@ -70,7 +77,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/configuracoes' }>
           <Link href="/configuracoes">
             <a>
               <Svg nameSvg="config" />
@@ -79,7 +86,7 @@ function Nav() {
             </a>
           </Link>
         </li>
-        <li>
+        <li data-active={ pathName === '/sair' }>
           <Link href="/sair">
             <a>
               <Svg nameSvg="exit" />

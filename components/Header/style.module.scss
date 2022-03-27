@@ -126,13 +126,39 @@
     gap: 1em;
     padding: 1.4em 2em;
     color: var(--color-text-mn);
+    transition: 0.2s linear;
 
     &:hover {
+      gap: 1.6em;
       color: var(--main-color);
     }
 
     &:hover path {
       fill: var(--main-color);
+    }
+  }
+
+  li[data-active="true"] {
+    background: var(--color-nav-hover-mn);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background: var(--color-bagy);
+      display: inline-block;
+      left: 0;
+    }
+
+    path {
+      fill: var(--main-color);
+    }
+  }
+
+  li:nth-child(4)[data-active="true"] {
+    path {
+      stroke: var(--main-color);
     }
   }
 }
