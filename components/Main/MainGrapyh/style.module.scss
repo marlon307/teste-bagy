@@ -38,8 +38,10 @@
   display: flex;
   gap: 3em;
 
-  span {
+  button {
     position: relative;
+    background: transparent;
+    cursor: pointer;
 
     &:before {
       position: absolute;
@@ -49,20 +51,26 @@
       height: 3px;
       top: 6px;
       left: -28px;
-      background: var(--color-bagy);
       border-radius: 6px;
+      background: var(--color-border);
     }
   }
 
-  span:last-child {
+  button[data-active="true"] {
     &:before {
-      background: var(--color-border);
+      background: var(--color-bagy);
     }
   }
 }
 
 .chart {
   grid-area: g;
+  max-height: 505px;
+}
+
+.tooltipchart {
+  color: var(--title-color);
+  font-weight: 550;
 }
 
 .mnchart {
