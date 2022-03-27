@@ -13,6 +13,11 @@ const typeDefs = gql`
   }
   type User {
     name: String
+    year: Int
+    meta: Int
+    this_month: String
+    last_month: String
+    total_billing: Float
     loja: String
     vendas: [Vendas]
   }
@@ -21,7 +26,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     data() {
-      return data;
+      return [...data];
     },
   },
 };
