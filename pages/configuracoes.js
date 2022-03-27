@@ -5,8 +5,8 @@ import style from '../styles/style.module.scss';
 function configuracoes() {
   return (
     <div className={ style.pgs }>
-      <h1>Planos e Metas</h1>
-      <Svg nameSvg="plans" />
+      <h1>Configurações</h1>
+      <Svg nameSvg="config" />
     </div>
   );
 }
