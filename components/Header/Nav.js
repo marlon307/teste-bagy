@@ -26,7 +26,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/loja">
             <a>
               <Svg nameSvg="store" />
               { ' ' }
@@ -35,7 +35,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/vendas">
             <a>
               <Svg nameSvg="sales" />
               { ' ' }
@@ -44,7 +44,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/clientes">
             <a>
               <Svg nameSvg="clients" />
               { ' ' }
@@ -53,7 +53,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/produtos">
             <a>
               <Svg nameSvg="products" />
               { ' ' }
@@ -62,7 +62,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/metas">
             <a>
               <Svg nameSvg="plans" />
               { ' ' }
@@ -71,7 +71,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/configuracoes">
             <a>
               <Svg nameSvg="config" />
               { ' ' }
@@ -80,7 +80,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/sair">
             <a>
               <Svg nameSvg="exit" />
               { ' ' }
