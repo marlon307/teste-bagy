@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+
 import style from '../styles/style.module.css';
 import Header from '../components/Header/Header';
 import Nav from '../components/Header/Nav';
