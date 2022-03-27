@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { gql } from '@apollo/client';
 import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
@@ -8,6 +8,7 @@ function Graphy() {
   const [seconfLineActive, setSeconfLineActive] = useState(true);
   const [dataUsers, setDataUsers] = useState([]);
   const [positive, setPositive] = useState(true);
+  const [storeId, setStoreId] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +37,7 @@ function Graphy() {
   }, []);
 
   useEffect(() => {
-    const result = dataUsers[0]?.vendas.reduce((acc, { this_month, last_month }) => ({
+    const result = dataUsers[storeId]?.vendas.reduce((acc, { this_month, last_month }) => ({
       this_month: this_month + acc.this_month,
       last_month: last_month + acc.last_month,
     }));
@@ -46,6 +47,12 @@ function Graphy() {
     } else {
       setPositive(false);
     }
+  }, [dataUsers, storeId]);
+
+  const slectStroe = useCallback(({ target }) => {
+    const { value } = target;
+    const indexStore = dataUsers.findIndex(({ loja }) => loja === value);
+    setStoreId(indexStore);
   }, [dataUsers]);
 
   return (
@@ -76,7 +83,7 @@ function Graphy() {
       </div>
       <div className={ style.chart }>
         <Graphic
-          data={ dataUsers?.length && dataUsers[0]?.vendas }
+          data={ dataUsers?.length && dataUsers[storeId]?.vendas }
           active={ seconfLineActive }
         />
       </div>
@@ -85,25 +92,38 @@ function Graphy() {
           <li>
             <div className={ style.mn }>
               <span>Loja</span>
-              <span>{ dataUsers[1]?.loja }</span>
+              <span>{ dataUsers[storeId]?.loja }</span>
+              <ul className={ style.liststore }>
+                { dataUsers?.map(({ loja }) => (
+                  <li key={ loja }>
+                    <button
+                      type="button"
+                      value={ loja }
+                      onClick={ slectStroe }
+                    >
+                      { loja }
+                    </button>
+                  </li>
+                )) }
+              </ul>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Mês</span>
-              <span>{ dataUsers[0]?.this_month }</span>
+              <span>{ dataUsers[storeId]?.this_month }</span>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Ano</span>
-              <span>{ dataUsers[0]?.year }</span>
+              <span>{ dataUsers[storeId]?.year }</span>
             </div>
           </li>
           <li>
             <span>Total de Faturamento</span>
             <span>
-              { dataUsers[0]?.total_billing.toLocaleString(
+              { dataUsers[storeId]?.total_billing.toLocaleString(
                 'pt-BR',
                 { style: 'currency', currency: 'BRL' },
               ) }
