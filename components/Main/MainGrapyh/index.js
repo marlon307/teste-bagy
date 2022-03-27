@@ -1,12 +1,44 @@
 import React from 'react';
-import { Chart } from 'react-google-charts';
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
 import style from './style.module.scss';
 
 const data = [
-  ['Age', ''],
-  [4, 5.5], [8, 12],
-  [4, 5.5], [8, 12],
-  [4, 5.5], [8, 12],
+  {
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    pv: 4800,
+    amt: 2181,
+  },
+  {
+    pv: 3800,
+    amt: 2500,
+  },
+  {
+    pv: 4300,
+    amt: 21000,
+  },
+  {},
 ];
 
 function Graphy() {
@@ -25,13 +57,32 @@ function Graphy() {
         </div>
       </div>
       <div className={ style.chart }>
-        {/* <Chart
-          chartType="Line"
-          data={ data }
-          width="100%"
-          height="100%"
-          legendToggle
-        /> */}
+        <ResponsiveContainer>
+          <AreaChart
+            data={ data }
+          >
+            <CartesianGrid
+              strokeDasharray="0"
+              vertical={ false }
+            />
+            <YAxis orientation="right" />
+            <Tooltip />
+            <Area
+              type="monotone"
+              dataKey="pv"
+              stackId="1"
+              stroke="#dfe0eb"
+              fill="#fff"
+            />
+            <Area
+              type="monotone"
+              dataKey="amt"
+              stackId="1"
+              stroke="#fc3c8d"
+              fill="#fff"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
       <div className={ style.mnchart }>
         <ul>
