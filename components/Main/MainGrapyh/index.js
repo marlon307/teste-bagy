@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {
-  LineChart,
-  Line,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
 import { gql } from '@apollo/client';
 import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
+import Graphic from './Graphic';
 
 function Graphy() {
   const [seconfLineActive, setSeconfLineActive] = useState(true);
@@ -23,6 +16,11 @@ function Graphy() {
           data {
             name
             loja
+            year
+            meta
+            this_month
+            last_month
+            total_billing
             vendas {
               this_month
               last_month
@@ -31,31 +29,10 @@ function Graphy() {
         }
       `,
       });
-      setDataUsers(data);
+      setDataUsers(data.data);
     }
     fetchData();
   }, []);
-
-  const setValueLabelShart = ({ payload }) => {
-    if (seconfLineActive) {
-      return (
-        <div className={ style.tooltipchart }>
-          { payload[0]?.value.toLocaleString(
-            'pt-BR',
-            { style: 'currency', currency: 'BRL' },
-          ) }
-        </div>
-      );
-    }
-    return (
-      <div className={ style.tooltipchart }>
-        { payload[1]?.value.toLocaleString(
-          'pt-BR',
-          { style: 'currency', currency: 'BRL' },
-        ) }
-      </div>
-    );
-  };
 
   return (
     <section className={ style.dashboard }>
@@ -84,58 +61,10 @@ function Graphy() {
         </div>
       </div>
       <div className={ style.chart }>
-        {dataUsers?.data?.length && (
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={ dataUsers?.data[2].vendas }
-          >
-            <CartesianGrid
-              vertical={ false }
-              strokeDasharray="0"
-            />
-            <YAxis
-              orientation="right"
-              type="number"
-              axisLine={ false }
-              tickLine={ false }
-              sacale="sequential"
-            />
-            <Tooltip
-              cursor={ false }
-              content={ setValueLabelShart }
-            />
-            <Line
-              dot={ false }
-              type="monotone"
-              dataKey="last_month"
-              connectNulls
-              legendType="rect"
-              stroke={ seconfLineActive ? '#DFE0EB' : '#FC3C8D' }
-              strokeWidth={ 3 }
-              activeDot={ !seconfLineActive && {
-                stroke: seconfLineActive ? '#DFE0EB' : '#FC3C8D',
-                strokeWidth: 6,
-                fill: '#fff',
-                r: 7,
-              } }
-            />
-            <Line
-              dot={ false }
-              type="monotone"
-              dataKey="this_month"
-              id="pink"
-              stroke={ seconfLineActive ? '#FC3C8D' : '#DFE0EB' }
-              activeDot={ seconfLineActive && {
-                stroke: seconfLineActive ? '#FC3C8D' : '#DFE0EB',
-                strokeWidth: 6,
-                fill: '#fff',
-                r: 7,
-              } }
-              strokeWidth={ 3 }
-            />
-          </LineChart>
-        </ResponsiveContainer>
-        )}
+        <Graphic
+          data={ dataUsers?.length && dataUsers[0]?.vendas }
+          active={ seconfLineActive }
+        />
       </div>
       <div className={ style.mnchart }>
         <ul>

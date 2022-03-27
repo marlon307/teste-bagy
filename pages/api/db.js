@@ -6,6 +6,8 @@ const client = [{
     this_month: 'Março',
     last_month: 'Fevereiro',
     year: 2022,
+    meta: 100000,
+    total_billing: 120300,
     vendas: [
       {
         this_month: 2400,
@@ -46,7 +48,9 @@ const client = [{
     loja: 'Mary Lingerie',
     this_month: 'Março',
     last_month: 'Fevereiro',
+    total_billing: 72620,
     year: 2022,
+    meta: 88000,
     vendas: [
       {
         this_month: 2400,
@@ -88,6 +92,8 @@ const client = [{
     this_month: 'Março',
     last_month: 'Fevereiro',
     year: 2022,
+    meta: 150000,
+    total_billing: 131323.23,
     vendas: [
       {
         this_month: 2400,
