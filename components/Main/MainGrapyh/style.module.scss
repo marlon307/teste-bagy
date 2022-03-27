@@ -103,20 +103,6 @@
     color: var(--title-color);
     text-align: center;
     font-size: 1.6em;
-
-    &:after {
-      content: '';
-      position: absolute;
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-left: 2px solid var(--title-color);
-      border-bottom: 2px solid var(--title-color);
-      top: 8px;
-      right: -22px;
-      transform: rotateZ(315deg);
-      transition: transform 0.2s linear;
-    }
   }
 
   li:last-child {
@@ -172,6 +158,27 @@
 
   &:hover .liststore {
     display: block !important;
+  }
+
+  span:nth-child(2) {
+    position: relative;
+    color: var(--title-color);
+    text-align: center;
+    font-size: 1.6em;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-left: 2px solid var(--title-color);
+      border-bottom: 2px solid var(--title-color);
+      top: 8px;
+      right: -22px;
+      transform: rotateZ(315deg);
+      transition: transform 0.2s linear;
+    }
   }
 
   &:hover {
