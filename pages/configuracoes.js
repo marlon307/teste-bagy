@@ -1,8 +1,13 @@
 import React from 'react';
+import Svg from '../assets/Svg';
+import style from '../styles/style.module.scss';
 
 function configuracoes() {
   return (
-    <div>Configurações</div>
+    <div className={ style.pgs }>
+      <h1>Planos e Metas</h1>
+      <Svg nameSvg="plans" />
+    </div>
   );
 }
 
