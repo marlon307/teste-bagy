@@ -38,8 +38,10 @@
   display: flex;
   gap: 3em;
 
-  span {
+  button {
     position: relative;
+    background: transparent;
+    cursor: pointer;
 
     &:before {
       position: absolute;
@@ -54,7 +56,7 @@
     }
   }
 
-  span:last-child {
+  button:last-child {
     &:before {
       background: var(--color-border);
     }
@@ -64,6 +66,11 @@
 .chart {
   grid-area: g;
   max-height: 505px;
+}
+
+.tooltipchart {
+  color: var(--title-color);
+  font-weight: 550;
 }
 
 .mnchart {

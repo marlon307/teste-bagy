@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  AreaChart,
-  Area,
-  ResponsiveContainer,
+  LineChart,
+  Line,
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from 'recharts';
 import style from './style.module.scss';
 
@@ -35,13 +35,38 @@ const data = [
     amt: 2500,
   },
   {
-    pv: 4300,
-    amt: 21000,
-  },
-  {},
+    pv: 6000,
+    amt: 4000,
+  }, {
+    pv: 5800,
+    amt: 5400,
+  }, {},
 ];
 
 function Graphy() {
+  const [seconfLineActive, setSeconfLineActive] = useState(true);
+
+  const setValueLabelShart = ({ payload }) => {
+    if (seconfLineActive) {
+      return (
+        <div className={ style.tooltipchart }>
+          { payload[0]?.value.toLocaleString(
+            'pt-BR',
+            { style: 'currency', currency: 'BRL' },
+          ) }
+        </div>
+      );
+    }
+    return (
+      <div className={ style.tooltipchart }>
+        { payload[1]?.value.toLocaleString(
+          'pt-BR',
+          { style: 'currency', currency: 'BRL' },
+        ) }
+      </div>
+    );
+  };
+
   return (
     <section className={ style.dashboard }>
       <div className={ style.headerdash }>
@@ -51,37 +76,61 @@ function Graphy() {
         <div className={ style.secondaryline }>
           <span>JULHO 2020</span>
           <div className={ style.infographyc }>
-            <span>Este mês</span>
-            <span>Mês passado</span>
+            <button type="button" onClick={ () => setSeconfLineActive(true) }>Este mês</button>
+            <button type="button" onClick={ () => setSeconfLineActive(false) }>Mês passado</button>
           </div>
         </div>
       </div>
       <div className={ style.chart }>
-        <ResponsiveContainer>
-          <AreaChart
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
             data={ data }
           >
             <CartesianGrid
-              strokeDasharray="0"
               vertical={ false }
+              strokeDasharray="0"
             />
-            <YAxis orientation="right" />
-            <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="pv"
-              stackId="1"
-              stroke="#dfe0eb"
-              fill="#fff"
+            <YAxis
+              orientation="right"
+              type="number"
+              axisLine={ false }
+              tickLine={ false }
+              sacale="sequential"
             />
-            <Area
+            <Tooltip
+              cursor={ false }
+              content={ setValueLabelShart }
+            />
+            <Line
+              dot={ false }
               type="monotone"
               dataKey="amt"
-              stackId="1"
-              stroke="#fc3c8d"
-              fill="#fff"
+              connectNulls
+              legendType="rect"
+              stroke="#DFE0EB"
+              strokeWidth={ 3 }
+              activeDot={ !seconfLineActive && {
+                stroke: '#DFE0EB',
+                strokeWidth: 6,
+                fill: '#fff',
+                r: 7,
+              } }
             />
-          </AreaChart>
+            <Line
+              dot={ false }
+              type="monotone"
+              dataKey="pv"
+              id="pink"
+              stroke="#FC3C8D"
+              activeDot={ seconfLineActive && {
+                stroke: '#FC3C8D',
+                strokeWidth: 6,
+                fill: '#fff',
+                r: 7,
+              } }
+              strokeWidth={ 3 }
+            />
+          </LineChart>
         </ResponsiveContainer>
       </div>
       <div className={ style.mnchart }>
