@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Header from '../components/Header/Header';
 import Nav from '../components/Header/Nav';
-import style from '../styles/style.module.css';
+import style from '../styles/style.module.scss';
 
 function MyApp({ Component, pageProps }) {
   return (
