@@ -1,4 +1,5 @@
 // https://github.com/vercel/next.js/blob/canary/examples/api-routes-graphql/pages/api/graphql.js
+// https://www.youtube.com/watch?v=7k_2V10H5j0&ab_channel=DevSoutinho
 import { ApolloServer, gql } from 'apollo-server-micro';
 import data from './db';
 
@@ -6,8 +7,14 @@ const typeDefs = gql`
   type Query {
     data: [User!]!
   }
+  type Vendas {
+    this_month: Float
+    last_month: Float
+  }
   type User {
     name: String
+    loja: String
+    vendas: [Vendas]
   }
 `;
 

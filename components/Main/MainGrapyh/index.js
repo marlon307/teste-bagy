@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -7,44 +7,34 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { gql } from '@apollo/client';
+import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
-
-const data = [
-  {
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    pv: 6000,
-    amt: 4000,
-  }, {
-    pv: 5800,
-    amt: 5400,
-  }, {},
-];
 
 function Graphy() {
   const [seconfLineActive, setSeconfLineActive] = useState(true);
+  const [dataUsers, setDataUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await client.query({
+        query: gql`
+        query {
+          data {
+            name
+            loja
+            vendas {
+              this_month
+              last_month
+            }
+          }
+        }
+      `,
+      });
+      setDataUsers(data);
+    }
+    fetchData();
+  }, []);
 
   const setValueLabelShart = ({ payload }) => {
     if (seconfLineActive) {
@@ -94,9 +84,10 @@ function Graphy() {
         </div>
       </div>
       <div className={ style.chart }>
+        {dataUsers?.data?.length && (
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={ data }
+            data={ dataUsers?.data[2].vendas }
           >
             <CartesianGrid
               vertical={ false }
@@ -116,7 +107,7 @@ function Graphy() {
             <Line
               dot={ false }
               type="monotone"
-              dataKey="amt"
+              dataKey="last_month"
               connectNulls
               legendType="rect"
               stroke={ seconfLineActive ? '#DFE0EB' : '#FC3C8D' }
@@ -131,7 +122,7 @@ function Graphy() {
             <Line
               dot={ false }
               type="monotone"
-              dataKey="pv"
+              dataKey="this_month"
               id="pink"
               stroke={ seconfLineActive ? '#FC3C8D' : '#DFE0EB' }
               activeDot={ seconfLineActive && {
@@ -144,6 +135,7 @@ function Graphy() {
             />
           </LineChart>
         </ResponsiveContainer>
+        )}
       </div>
       <div className={ style.mnchart }>
         <ul>

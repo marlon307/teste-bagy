@@ -1,32 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { gql } from '@apollo/client';
+
 import style from '../styles/style.module.css';
 import Header from '../components/Header/Header';
 import Nav from '../components/Header/Nav';
 import MainHeader from '../components/Main/MainHeader';
 import Graphy from '../components/Main/MainGrapyh';
 import FooterMain from '../components/Main/MainFooter';
-import client from '../config/clientgraphql';
 
 export default function Home() {
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await client.query({
-        query: gql`
-        query {
-          data {
-            name
-          }
-        }
-      `,
-      });
-      console.log(data);
-    }
-    fetchData();
-  }, []);
-
   return (
     <div className={ style.container }>
       <Head>
