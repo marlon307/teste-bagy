@@ -76,8 +76,20 @@ function Graphy() {
         <div className={ style.secondaryline }>
           <span>JULHO 2020</span>
           <div className={ style.infographyc }>
-            <button type="button" onClick={ () => setSeconfLineActive(true) }>Este mês</button>
-            <button type="button" onClick={ () => setSeconfLineActive(false) }>Mês passado</button>
+            <button
+              type="button"
+              data-active={ seconfLineActive }
+              onClick={ () => setSeconfLineActive(true) }
+            >
+              Este mês
+            </button>
+            <button
+              type="button"
+              data-active={ !seconfLineActive }
+              onClick={ () => setSeconfLineActive(false) }
+            >
+              Mês passado
+            </button>
           </div>
         </div>
       </div>
@@ -107,10 +119,10 @@ function Graphy() {
               dataKey="amt"
               connectNulls
               legendType="rect"
-              stroke="#DFE0EB"
+              stroke={ seconfLineActive ? '#DFE0EB' : '#FC3C8D' }
               strokeWidth={ 3 }
               activeDot={ !seconfLineActive && {
-                stroke: '#DFE0EB',
+                stroke: seconfLineActive ? '#DFE0EB' : '#FC3C8D',
                 strokeWidth: 6,
                 fill: '#fff',
                 r: 7,
@@ -121,9 +133,9 @@ function Graphy() {
               type="monotone"
               dataKey="pv"
               id="pink"
-              stroke="#FC3C8D"
+              stroke={ seconfLineActive ? '#FC3C8D' : '#DFE0EB' }
               activeDot={ seconfLineActive && {
-                stroke: '#FC3C8D',
+                stroke: seconfLineActive ? '#FC3C8D' : '#DFE0EB',
                 strokeWidth: 6,
                 fill: '#fff',
                 r: 7,
