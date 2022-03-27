@@ -105,11 +105,16 @@
 
   li:last-child {
     border: none;
-
-    span:last-child {
-      color: var(--color-approve);
-    }
   }
+
+  span[data-positive="true"] {
+    color: var(--color-approve);
+  }
+
+  span[data-positive="false"] {
+    color: var(--color-negative);
+  }
+
 }
 
 .mn {

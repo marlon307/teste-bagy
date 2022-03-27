@@ -7,6 +7,7 @@ import Graphic from './Graphic';
 function Graphy() {
   const [seconfLineActive, setSeconfLineActive] = useState(true);
   const [dataUsers, setDataUsers] = useState([]);
+  const [positive, setPositive] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +34,19 @@ function Graphy() {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const result = dataUsers[0]?.vendas.reduce((acc, { this_month, last_month }) => ({
+      this_month: this_month + acc.this_month,
+      last_month: last_month + acc.last_month,
+    }));
+
+    if (result && result.this_month > result.last_month) {
+      setPositive(true);
+    } else {
+      setPositive(false);
+    }
+  }, [dataUsers]);
 
   return (
     <section className={ style.dashboard }>
@@ -71,28 +85,34 @@ function Graphy() {
           <li>
             <div className={ style.mn }>
               <span>Loja</span>
-              <span>Estilo Pri</span>
+              <span>{ dataUsers[1]?.loja }</span>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Mês</span>
-              <span>Julho</span>
+              <span>{ dataUsers[0]?.this_month }</span>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Ano</span>
-              <span>2020</span>
+              <span>{ dataUsers[0]?.year }</span>
             </div>
           </li>
           <li>
             <span>Total de Faturamento</span>
-            <span>R$ 45.000,00</span>
+            <span>
+              { dataUsers[0]?.total_billing.toLocaleString(
+                'pt-BR',
+                { style: 'currency', currency: 'BRL' },
+              ) }
+
+            </span>
           </li>
           <li>
             <span>Analize Comparativa</span>
-            <span>Positivo</span>
+            <span data-positive={ positive }>{ positive ? 'Positivo' : 'Negativo' }</span>
           </li>
         </ul>
       </div>
