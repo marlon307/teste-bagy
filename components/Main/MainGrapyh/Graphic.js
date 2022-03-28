@@ -50,6 +50,12 @@ function Graphic({ data, active }) {
           cursor={ false }
           content={ setValueLabelShart }
         />
+        <defs>
+          <linearGradient id="coloractive" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="3%" stopColor="#37f3ffab" stopOpacity={ 0.4 } />
+            <stop offset="97%" stopColor="#37f3ffab" stopOpacity={ 0.08 } />
+          </linearGradient>
+        </defs>
         <Area
           dot={ false }
           type="monotone"
@@ -58,7 +64,7 @@ function Graphic({ data, active }) {
           legendType="rect"
           stroke={ active ? '#DFE0EB' : '#FC3C8D' }
           strokeWidth={ 3 }
-          fill={ !active ? '#37f3ff12' : '#ffffff00' }
+          fill={ !active ? 'url(#coloractive)' : '#ffffff00' }
           activeDot={ !active && {
             stroke: active ? '#DFE0EB' : '#FC3C8D',
             strokeWidth: 6,
@@ -71,7 +77,7 @@ function Graphic({ data, active }) {
           type="monotone"
           dataKey="this_month"
           id="pink"
-          fill={ active ? '#37f3ff12' : '#ffffff00' }
+          fill={ active ? 'url(#coloractive)' : '#ffffff00' }
           stroke={ active ? '#FC3C8D' : '#DFE0EB' }
           activeDot={ active && {
             stroke: active ? '#FC3C8D' : '#DFE0EB',
