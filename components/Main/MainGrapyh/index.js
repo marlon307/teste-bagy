@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {
+  useState, useEffect, useCallback,
+} from 'react';
 import { gql } from '@apollo/client';
 import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
@@ -62,7 +64,11 @@ function Graphy() {
           Total de faturamento mensal
         </div>
         <div className={ style.secondaryline }>
-          <span>JULHO 2020</span>
+          <span>
+            {dataUsers[storeId]?.this_month}
+            {' '}
+            2022
+          </span>
           <div className={ style.infographyc }>
             <button
               type="button"
@@ -112,12 +118,30 @@ function Graphy() {
             <div className={ style.mn }>
               <span>Mês</span>
               <span>{ dataUsers[storeId]?.this_month }</span>
+              <ul className={ style.liststore }>
+                <li>
+                  <button
+                    type="button"
+                  >
+                    Março
+                  </button>
+                </li>
+              </ul>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Ano</span>
               <span>{ dataUsers[storeId]?.year }</span>
+              <ul className={ style.liststore }>
+                <li>
+                  <button
+                    type="button"
+                  >
+                    2022
+                  </button>
+                </li>
+              </ul>
             </div>
           </li>
           <li>

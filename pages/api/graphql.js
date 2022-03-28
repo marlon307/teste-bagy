@@ -4,9 +4,6 @@ import { ApolloServer, gql } from 'apollo-server-micro';
 import data from './db';
 
 const typeDefs = gql`
-  type Query {
-    data: [User!]!
-  }
   type Vendas {
     this_month: Float
     last_month: Float
@@ -21,12 +18,30 @@ const typeDefs = gql`
     loja: String
     vendas: [Vendas]
   }
+
+  type Query {
+    data: [User!]!
+    emphasis: User
+  }
 `;
+
+const getMaxValue = () => {
+  const result = data.reduce((acc, objectStore) => {
+    const maxValue = acc.total_billing > objectStore.total_billing;
+    return maxValue ? acc : objectStore;
+  }, { total_billing: 0 });
+  return result;
+};
+
+// console.log(getMaxValue());
 
 const resolvers = {
   Query: {
     data() {
       return [...data];
+    },
+    emphasis() {
+      return getMaxValue();
     },
   },
 };
