@@ -62,7 +62,11 @@ function Graphy() {
           Total de faturamento mensal
         </div>
         <div className={ style.secondaryline }>
-          <span>JULHO 2020</span>
+          <span>
+            {dataUsers[storeId]?.this_month}
+            {' '}
+            2022
+          </span>
           <div className={ style.infographyc }>
             <button
               type="button"
