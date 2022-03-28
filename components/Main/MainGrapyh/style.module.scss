@@ -5,7 +5,7 @@
     "h m"
     "g m";
   grid-template-rows: 125px 100%;
-  grid-template-columns: minmax(150px, 1920px) minmax(250px, 20%);
+  grid-template-columns: minmax(150px, 1920px) minmax(72px, 350px);
   margin: 2em auto;
   border: 2px solid var(--color-border);
   border-radius: 8px;

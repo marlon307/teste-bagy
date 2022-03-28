@@ -161,3 +161,9 @@
   border-radius: 12px;
   font-weight: 600;
 }
+
+@media (max-width: 1080px) {
+  .footermain {
+    justify-content: center;
+  }
+}
