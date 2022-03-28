@@ -36,10 +36,15 @@ function Graphic({ data, active }) {
     <ResponsiveContainer>
       <AreaChart
         data={ data }
+        margin={ {
+          top: 26,
+          right: 0,
+          left: 52,
+          bottom: 9,
+        } }
       >
         <CartesianGrid
           vertical={ false }
-          strokeDasharray="0"
         />
         <YAxis
           orientation="right"
