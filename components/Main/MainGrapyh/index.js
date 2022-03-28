@@ -112,12 +112,30 @@ function Graphy() {
             <div className={ style.mn }>
               <span>Mês</span>
               <span>{ dataUsers[storeId]?.this_month }</span>
+              <ul className={ style.liststore }>
+                <li>
+                  <button
+                    type="button"
+                  >
+                    Março
+                  </button>
+                </li>
+              </ul>
             </div>
           </li>
           <li>
             <div className={ style.mn }>
               <span>Ano</span>
               <span>{ dataUsers[storeId]?.year }</span>
+              <ul className={ style.liststore }>
+                <li>
+                  <button
+                    type="button"
+                  >
+                    2022
+                  </button>
+                </li>
+              </ul>
             </div>
           </li>
           <li>
