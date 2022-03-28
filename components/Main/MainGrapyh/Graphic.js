@@ -7,36 +7,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import CircleGraphic from './CircleGraphic';
 import style from './style.module.scss';
-
-function Teste({ cx, cy }) {
-  // stroke: active ? '#DFE0EB' : '#FC3C8D',
-  //           strokeWidth: 6,
-  //           border: '3px solid #555',
-  //           fill: '#fff',
-  //           r: 7,
-  return (
-    <>
-      <circle
-        cx={ cx }
-        cy={ cy }
-        r={ 18 }
-        stroke="#3751FF"
-        opacity={ 0.12 }
-        strokeWidth={ 3 }
-        fill="#ffffff00"
-      />
-      <circle
-        cx={ cx }
-        cy={ cy }
-        r={ 7 }
-        stroke="#FC3C8D"
-        strokeWidth={ 6 }
-        fill="#fff"
-      />
-    </>
-  );
-}
 
 function Graphic({ data, active }) {
   const setValueLabelShart = ({ payload }) => {
@@ -93,13 +65,7 @@ function Graphic({ data, active }) {
           stroke={ active ? '#DFE0EB' : '#FC3C8D' }
           strokeWidth={ 3 }
           fill={ !active ? 'url(#coloractive)' : '#ffffff00' }
-          activeDot={ !active && {
-            stroke: active ? '#DFE0EB' : '#FC3C8D',
-            strokeWidth: 6,
-            border: '3px solid #555',
-            fill: '#fff',
-            r: 7,
-          } }
+          activeDot={ !active && <CircleGraphic /> }
         />
         <Area
           dot={ false }
@@ -107,7 +73,7 @@ function Graphic({ data, active }) {
           dataKey="this_month"
           fill={ active ? 'url(#coloractive)' : '#ffffff00' }
           stroke={ active ? '#FC3C8D' : '#DFE0EB' }
-          activeDot={ <Teste /> }
+          activeDot={ active && <CircleGraphic /> }
           strokeWidth={ 3 }
         />
       </AreaChart>
