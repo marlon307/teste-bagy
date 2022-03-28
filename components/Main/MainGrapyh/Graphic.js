@@ -56,6 +56,7 @@ function Graphic({ data, active }) {
         />
         <Tooltip
           content={ setValueLabelShart }
+          sition={ { y: 0 } }
         />
         <defs>
           <linearGradient id="coloractive" x1="0%" y1="0%" x2="100%" y2="0%">
