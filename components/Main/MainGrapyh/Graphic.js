@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   YAxis,
   CartesianGrid,
   Tooltip,
@@ -31,8 +31,8 @@ function Graphic({ data, active }) {
     );
   };
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart
+    <ResponsiveContainer>
+      <AreaChart
         data={ data }
       >
         <CartesianGrid
@@ -50,7 +50,7 @@ function Graphic({ data, active }) {
           cursor={ false }
           content={ setValueLabelShart }
         />
-        <Line
+        <Area
           dot={ false }
           type="monotone"
           dataKey="last_month"
@@ -58,6 +58,7 @@ function Graphic({ data, active }) {
           legendType="rect"
           stroke={ active ? '#DFE0EB' : '#FC3C8D' }
           strokeWidth={ 3 }
+          fill={ !active ? '#37f3ff12' : '#ffffff00' }
           activeDot={ !active && {
             stroke: active ? '#DFE0EB' : '#FC3C8D',
             strokeWidth: 6,
@@ -65,11 +66,12 @@ function Graphic({ data, active }) {
             r: 7,
           } }
         />
-        <Line
+        <Area
           dot={ false }
           type="monotone"
           dataKey="this_month"
           id="pink"
+          fill={ active ? '#37f3ff12' : '#ffffff00' }
           stroke={ active ? '#FC3C8D' : '#DFE0EB' }
           activeDot={ active && {
             stroke: active ? '#FC3C8D' : '#DFE0EB',
@@ -79,7 +81,7 @@ function Graphic({ data, active }) {
           } }
           strokeWidth={ 3 }
         />
-      </LineChart>
+      </AreaChart>
     </ResponsiveContainer>
   );
 }
