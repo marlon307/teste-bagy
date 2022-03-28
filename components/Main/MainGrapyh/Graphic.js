@@ -9,6 +9,7 @@ import {
 } from 'recharts';
 import CircleGraphic from './CircleGraphic';
 import style from './style.module.scss';
+import Tick from './Tick';
 
 function Graphic({ data, active }) {
   const setValueLabelShart = ({ payload }) => {
@@ -45,6 +46,7 @@ function Graphic({ data, active }) {
           type="number"
           axisLine={ false }
           tickLine={ false }
+          tick={ <Tick /> }
           sacale="sequential"
         />
         <Tooltip
