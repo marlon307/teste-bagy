@@ -37,7 +37,7 @@ function Graphic({ data, active }) {
       <AreaChart
         data={ data }
         margin={ {
-          top: 26,
+          top: 52,
           right: 0,
           left: 52,
           bottom: 9,
