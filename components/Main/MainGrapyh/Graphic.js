@@ -9,6 +9,7 @@ import {
 } from 'recharts';
 import CircleGraphic from './CircleGraphic';
 import style from './style.module.scss';
+import Tick from './Tick';
 
 function Graphic({ data, active }) {
   const setValueLabelShart = ({ payload }) => {
@@ -35,20 +36,27 @@ function Graphic({ data, active }) {
     <ResponsiveContainer>
       <AreaChart
         data={ data }
+        margin={ {
+          top: 52,
+          right: 0,
+          left: 52,
+          bottom: 9,
+        } }
       >
         <CartesianGrid
           vertical={ false }
-          strokeDasharray="0"
         />
         <YAxis
           orientation="right"
           type="number"
           axisLine={ false }
           tickLine={ false }
+          tick={ <Tick /> }
           sacale="sequential"
         />
         <Tooltip
           content={ setValueLabelShart }
+          sition={ { y: 0 } }
         />
         <defs>
           <linearGradient id="coloractive" x1="0%" y1="0%" x2="100%" y2="0%">

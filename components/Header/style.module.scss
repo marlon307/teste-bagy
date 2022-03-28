@@ -143,6 +143,10 @@
     outline: 1px solid var(--main-color);
     box-shadow: 0px 4px 4px var(--color-shadow);
 
+    a {
+      color: var(--main-color);
+    }
+
     &::before {
       content: '';
       position: absolute;
