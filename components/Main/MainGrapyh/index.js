@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {
+  useState, useEffect, useCallback,
+} from 'react';
 import { gql } from '@apollo/client';
 import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
