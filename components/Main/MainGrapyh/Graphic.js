@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import CircleGraphic from './CircleGraphic';
 import style from './style.module.scss';
 
 function Graphic({ data, active }) {
@@ -14,7 +15,7 @@ function Graphic({ data, active }) {
     if (active) {
       return (
         <div className={ style.tooltipchart }>
-          { payload[0]?.value.toLocaleString(
+          { payload && payload[1]?.value.toLocaleString(
             'pt-BR',
             { style: 'currency', currency: 'BRL' },
           ) }
@@ -23,7 +24,7 @@ function Graphic({ data, active }) {
     }
     return (
       <div className={ style.tooltipchart }>
-        { payload[1]?.value.toLocaleString(
+        { payload && payload[0]?.value.toLocaleString(
           'pt-BR',
           { style: 'currency', currency: 'BRL' },
         ) }
@@ -47,9 +48,14 @@ function Graphic({ data, active }) {
           sacale="sequential"
         />
         <Tooltip
-          cursor={ false }
           content={ setValueLabelShart }
         />
+        <defs>
+          <linearGradient id="coloractive" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="3%" stopColor="#37f3ffab" stopOpacity={ 0.28 } />
+            <stop offset="97%" stopColor="#37f3ffab" stopOpacity={ 0.02 } />
+          </linearGradient>
+        </defs>
         <Area
           dot={ false }
           type="monotone"
@@ -58,27 +64,16 @@ function Graphic({ data, active }) {
           legendType="rect"
           stroke={ active ? '#DFE0EB' : '#FC3C8D' }
           strokeWidth={ 3 }
-          fill={ !active ? '#37f3ff12' : '#ffffff00' }
-          activeDot={ !active && {
-            stroke: active ? '#DFE0EB' : '#FC3C8D',
-            strokeWidth: 6,
-            fill: '#fff',
-            r: 7,
-          } }
+          fill={ !active ? 'url(#coloractive)' : '#ffffff00' }
+          activeDot={ !active && <CircleGraphic /> }
         />
         <Area
           dot={ false }
           type="monotone"
           dataKey="this_month"
-          id="pink"
-          fill={ active ? '#37f3ff12' : '#ffffff00' }
+          fill={ active ? 'url(#coloractive)' : '#ffffff00' }
           stroke={ active ? '#FC3C8D' : '#DFE0EB' }
-          activeDot={ active && {
-            stroke: active ? '#FC3C8D' : '#DFE0EB',
-            strokeWidth: 6,
-            fill: '#fff',
-            r: 7,
-          } }
+          activeDot={ active && <CircleGraphic /> }
           strokeWidth={ 3 }
         />
       </AreaChart>

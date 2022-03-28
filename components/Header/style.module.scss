@@ -140,6 +140,8 @@
 
   li[data-active="true"] {
     background: var(--color-nav-hover-mn);
+    outline: 1px solid var(--main-color);
+    box-shadow: 0px 4px 4px var(--color-shadow);
 
     &::before {
       content: '';
