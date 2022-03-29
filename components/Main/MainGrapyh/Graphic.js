@@ -60,6 +60,7 @@ function Graphic({ data, active }) {
           content={ setValueLabelShart }
           sition={ { y: 0 } }
         />
+        {/* Degrade abaixo da linha do gráfico */ }
         <defs>
           <linearGradient id="coloractive" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="3%" stopColor="#37f3ffab" stopOpacity={ 0.28 } />

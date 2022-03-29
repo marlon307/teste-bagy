@@ -38,6 +38,7 @@ const typeDefs = gql`
   }
 `;
 
+// Ordena meu array de cliente com base o total de vendas do mês atual
 const getSorted = () => {
   const result = client.sort((sotreOne, storeTwo) => {
     const calcStoreOne = sotreOne.vendas
