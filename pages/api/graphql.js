@@ -8,13 +8,12 @@ const typeDefs = gql`
     this_month: Float
     last_month: Float
   }
+
   type User {
     name: String
     year: Int
     meta: Int
     this_month: String
-    last_month: String
-    total_billing: Float
     loja: String
     vendas: [Vendas]
   }
@@ -34,28 +33,23 @@ const typeDefs = gql`
 
   type Query {
     data: [User!]!
-    emphasis: User
     buys: [Buys]
     sales: [Sales]
   }
 `;
 
-const getMaxValue = () => {
-  const result = client.reduce((acc, objectStore) => {
-    const calc = objectStore
-      .vendas.reduce((accStore, list) => (
-        list.this_month ? list.this_month + accStore : 0 + accStore
-      ), 0);
-
-    const maxValue = acc.total_billing > calc;
-    return maxValue ? {
-      ...acc,
-      total_billing: calc,
-    } : {
-      ...objectStore,
-      total_billing: calc,
-    };
-  }, { total_billing: 0 });
+const getSorted = () => {
+  const result = client.sort((sotreOne, storeTwo) => {
+    const calcStoreOne = sotreOne.vendas
+      .reduce((acc, reducObjOne) => (
+        reducObjOne.this_month ? acc + reducObjOne.this_month : acc), 0);
+    const calcStoreTwo = storeTwo.vendas
+      .reduce((acc, reducObjTwo) => (
+        reducObjTwo.this_month ? acc + reducObjTwo.this_month : acc), 0);
+    if (calcStoreOne > calcStoreTwo) return -1;
+    if (calcStoreTwo < calcStoreOne) return 1;
+    return 0;
+  });
 
   return result;
 };
@@ -63,10 +57,7 @@ const getMaxValue = () => {
 const resolvers = {
   Query: {
     data() {
-      return client;
-    },
-    emphasis() {
-      return getMaxValue();
+      return getSorted();
     },
     buys() {
       return totalBuys;

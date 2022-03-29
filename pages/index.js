@@ -16,12 +16,10 @@ export default function Home() {
         query {
           data {
             name
-            loja
             year
             meta
             this_month
-            last_month
-            total_billing
+            loja
             vendas {
               this_month
               last_month
@@ -36,7 +34,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <MainHeader />
+      <MainHeader dataUser={ dataUsers[storeId] } />
       <Graphy storeId={ storeId } dataUsers={ dataUsers } setStoreId={ setStoreId } />
       <FooterMain />
     </>

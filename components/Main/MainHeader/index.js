@@ -1,45 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { gql } from '@apollo/client';
+import React from 'react';
+
 import Box from './Box';
 import style from './style.module.scss';
-import client from '../../../config/clientgraphql';
 
-function MainHeader() {
-  const [dataEmphasis, setDataEmphasis] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await client.query({
-        query: gql`
-        query {
-          emphasis {
-            loja
-            meta
-            total_billing
-          }
-        }
-      `,
-      });
-      setDataEmphasis(data.emphasis);
-    }
-    fetchData();
-  }, []);
+function MainHeader({ dataUser }) {
+  const getMaxValue = () => {
+    const result = dataUser?.vendas.reduce((acc, objectStore) => objectStore.this_month + acc, 0);
+    return result;
+  };
+
   return (
     <section className={ style.mainheader }>
       <Box primaryLine="Total de Lojas" secondaryLine="7231" />
       <Box
         primaryLine="Faturamento Total"
-        secondaryLine={ dataEmphasis?.total_billing?.toLocaleString(
+        secondaryLine={ getMaxValue()?.toLocaleString(
           'pt-BR',
           { style: 'currency', currency: 'BRL' },
         ) }
       />
       <Box
         primaryLine="Loja Destaque"
-        secondaryLine={ dataEmphasis?.loja }
+        secondaryLine={ dataUser?.loja }
       />
       <Box
         primaryLine="Meta Mensal"
-        secondaryLine={ dataEmphasis?.meta?.toLocaleString(
+        secondaryLine={ dataUser?.meta?.toLocaleString(
           'pt-BR',
           { style: 'currency', currency: 'BRL' },
         ) }
