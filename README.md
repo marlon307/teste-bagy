@@ -2,16 +2,24 @@
 
 ## Começando
 
-Voce pode ver esse projeto em funcionamento de duas formas
+Você pode ver esse projeto em funcionamento de duas formas
 
-[https://teste-bagy.vercel.app/](https://teste-bagy.vercel.app/)
+Através deste link [https://teste-bagy.vercel.app/](https://teste-bagy.vercel.app/) .
 
-ou caso você deseje rodar esse projeto em sua maquina local, execute esses comandos a seguir
+Ou caso você deseje rodar esse projeto em sua máquina local, execute as instruções a seguir
 
-Primeiro, instale as dependencia do projeto:
+<br>
 
+Crie um arquivo <code>.env.development.local</code> na pasta raiz do projeto.
+```bash
+.env.development.local
+```
+Apos ter criado o arquivo, copie o texto baixo e cole no arquivo criado
+```bash
 URL_API=http://localhost:3000/api/graphql
+```
 
+Instale as dependências do projeto:
 
 ```bash
 npm install
@@ -19,7 +27,7 @@ npm install
 yarn
 ```
 
-Segundo, execute o servidor de desenvolvimento:
+Execute o servidor de desenvolvimento
 
 ```bash
 npm run dev
