@@ -13,18 +13,18 @@ function MainHeader({ dataUser }) {
     <section className={ style.mainheader }>
       <Box primaryLine="Total de Lojas" secondaryLine="7231" />
       <Box
-        primaryLine="Faturamento Total"
+        primaryLine="Faturamento total"
         secondaryLine={ getMaxValue()?.toLocaleString(
           'pt-BR',
           { style: 'currency', currency: 'BRL' },
         ) }
       />
       <Box
-        primaryLine="Loja Destaque"
+        primaryLine="Loja destaque"
         secondaryLine={ dataUser?.loja }
       />
       <Box
-        primaryLine="Meta Mensal"
+        primaryLine="Meta mensal"
         secondaryLine={ dataUser?.meta?.toLocaleString(
           'pt-BR',
           { style: 'currency', currency: 'BRL' },
