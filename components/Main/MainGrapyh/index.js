@@ -11,7 +11,7 @@ function Graphy({ dataUsers, storeId, setStoreId }) {
 
   useEffect(() => {
     // O cauculo esta sendo fieto com base no saldo do mês anterior. Se o valor do mês atual for
-    // inferior ao mês passado então a analize comparativa vai ser NEGTIVA
+    // inferior ao mês passado então a análize comparativa vai ser NEGTIVA
     const result = dataUsers[storeId]?.vendas.reduce((acc, { this_month, last_month }) => ({
       this_month: this_month + acc.this_month,
       last_month: last_month + acc.last_month,
@@ -129,7 +129,7 @@ function Graphy({ dataUsers, storeId, setStoreId }) {
             </span>
           </li>
           <li>
-            <span>Analize Comparativa</span>
+            <span>Análize Comparativa</span>
             <span data-positive={ positive }>{ positive ? 'Positivo' : 'Negativo' }</span>
           </li>
         </ul>
