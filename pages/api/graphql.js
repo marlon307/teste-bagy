@@ -1,7 +1,7 @@
 // https://github.com/vercel/next.js/blob/canary/examples/api-routes-graphql/pages/api/graphql.js
 // https://www.youtube.com/watch?v=7k_2V10H5j0&ab_channel=DevSoutinho
 import { ApolloServer, gql } from 'apollo-server-micro';
-import data from './db';
+import { client, totalBuys, sales } from './db';
 
 const typeDefs = gql`
   type Vendas {
@@ -19,14 +19,29 @@ const typeDefs = gql`
     vendas: [Vendas]
   }
 
+  type Buys {
+    loja: String
+    sales: String
+    total_sales: Float
+  }
+
+  type Sales {
+    loja: String
+    product: String
+    value: Float
+    date: String
+  }
+
   type Query {
     data: [User!]!
     emphasis: User
+    buys: [Buys]
+    sales: [Sales]
   }
 `;
 
 const getMaxValue = () => {
-  const result = data.reduce((acc, objectStore) => {
+  const result = client.reduce((acc, objectStore) => {
     const maxValue = acc.total_billing > objectStore.total_billing;
     return maxValue ? acc : objectStore;
   }, { total_billing: 0 });
@@ -38,10 +53,16 @@ const getMaxValue = () => {
 const resolvers = {
   Query: {
     data() {
-      return [...data];
+      return client;
     },
     emphasis() {
       return getMaxValue();
+    },
+    buys() {
+      return totalBuys;
+    },
+    sales() {
+      return sales;
     },
   },
 };

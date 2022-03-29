@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.module.scss';
 
-function BoxProducts() {
+function BoxProducts({ data }) {
   return (
     <div className={ style.boxproduct }>
       <table className={ style.table } cellSpacing="0">
@@ -14,56 +14,20 @@ function BoxProducts() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Brincos #023</td>
-            <td>Estilo Pri</td>
-            <td>
-              <span className={ style.tbprice }>R$ 350,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Conjunto #023</td>
-            <td>Estilo Pri</td>
-            <td>
-              <span className={ style.tbprice }>R$ 29,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Body #077</td>
-            <td>Mary Lingerie</td>
-            <td>
-              <span className={ style.tbprice }>R$ 29,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Sandália #023</td>
-            <td>Mary Lingerie</td>
-            <td>
-              <span className={ style.tbprice }>R$ 29,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Brincos #023</td>
-            <td>Vilma Calçados</td>
-            <td>
-              <span className={ style.tbprice }>R$ 29,90</span>
-            </td>
-            <td>
-              <span className={ style.tbdate }>17/07/20</span>
-            </td>
-          </tr>
+          { data?.map(({
+            loja, product, value, date,
+          }) => (
+            <tr key={ product }>
+              <td>{ product }</td>
+              <td>{ loja }</td>
+              <td>
+                <span className={ style.tbprice }>{ value?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</span>
+              </td>
+              <td>
+                <span className={ style.tbdate }>{ date }</span>
+              </td>
+            </tr>
+          )) }
         </tbody>
       </table>
     </div>

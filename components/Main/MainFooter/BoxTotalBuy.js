@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './style.module.scss';
 
-function BoxTotalBuy() {
+function BoxTotalBuy({ data }) {
+  const [totalSales, setTotalSales] = useState(0);
+  useEffect(() => {
+    function calcTotalSales() {
+      const result = data?.reduce((acc, { total_sales }) => total_sales + acc, 0);
+      setTotalSales(result);
+    }
+    calcTotalSales();
+  }, [data]);
+
   return (
     <div className={ style.boxtotalbuy }>
       <div className={ style.headerbox }>
@@ -10,31 +19,22 @@ function BoxTotalBuy() {
           <span>Semana</span>
         </div>
         <div className={ style.secondaryLine }>
-          <span>Valor geral: 13.250,00</span>
+          <span>
+            Valor geral:
+            { ' ' }
+            { totalSales?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }
+          </span>
         </div>
       </div>
       <main className={ style.mainbox }>
         <ul>
-          <li>
-            <span>Estilo Pri</span>
-            <span>250 compras</span>
-            <span>R$ 4238,00</span>
-          </li>
-          <li>
-            <span>Vilma Calçados</span>
-            <span>187 compras</span>
-            <span>R$ 1005,00</span>
-          </li>
-          <li>
-            <span>Mary Lingerie</span>
-            <span>124 compras</span>
-            <span>R$ 914,00</span>
-          </li>
-          <li>
-            <span>Loja Belíssima</span>
-            <span>89 compras</span>
-            <span>R$ 281,00</span>
-          </li>
+          { data?.map(({ loja, sales, total_sales }) => (
+            <li key={ loja }>
+              <span>{ loja }</span>
+              <span>{ sales }</span>
+              <span>{ total_sales?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</span>
+            </li>
+          )) }
         </ul>
       </main>
     </div>
