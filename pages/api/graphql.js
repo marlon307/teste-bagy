@@ -42,13 +42,23 @@ const typeDefs = gql`
 
 const getMaxValue = () => {
   const result = client.reduce((acc, objectStore) => {
-    const maxValue = acc.total_billing > objectStore.total_billing;
-    return maxValue ? acc : objectStore;
+    const calc = objectStore
+      .vendas.reduce((accStore, list) => (
+        list.this_month ? list.this_month + accStore : 0 + accStore
+      ), 0);
+
+    const maxValue = acc.total_billing > calc;
+    return maxValue ? {
+      ...acc,
+      total_billing: calc,
+    } : {
+      ...objectStore,
+      total_billing: calc,
+    };
   }, { total_billing: 0 });
+
   return result;
 };
-
-// console.log(getMaxValue());
 
 const resolvers = {
   Query: {

@@ -11,6 +11,7 @@ function Graphy() {
   const [dataUsers, setDataUsers] = useState([]);
   const [positive, setPositive] = useState(true);
   const [storeId, setStoreId] = useState(0);
+  const [totalBilling, setTotalBilling] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,6 +50,7 @@ function Graphy() {
     } else {
       setPositive(false);
     }
+    setTotalBilling(result?.this_month);
   }, [dataUsers, storeId]);
 
   const slectStroe = useCallback(({ target }) => {
@@ -65,8 +67,8 @@ function Graphy() {
         </div>
         <div className={ style.secondaryline }>
           <span>
-            {dataUsers[storeId]?.this_month}
-            {' '}
+            { dataUsers[storeId]?.this_month }
+            { ' ' }
             2022
           </span>
           <div className={ style.infographyc }>
@@ -147,7 +149,7 @@ function Graphy() {
           <li>
             <span>Total de Faturamento</span>
             <span>
-              { dataUsers[storeId]?.total_billing.toLocaleString(
+              { totalBilling?.toLocaleString(
                 'pt-BR',
                 { style: 'currency', currency: 'BRL' },
               ) }

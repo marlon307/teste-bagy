@@ -42,6 +42,8 @@
     position: relative;
     background: transparent;
     cursor: pointer;
+    font-size: 0.9em;
+    color: var(--color-h4-text-box);
 
     &:before {
       position: absolute;
