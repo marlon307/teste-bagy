@@ -6,7 +6,7 @@ Voce pode ver esse projeto em funcionamento de duas formas
 
 [https://teste-bagy.vercel.app/](https://teste-bagy.vercel.app/)
 
-ou você deseje rodar esse projeto em sua maquina local execute esses comandos abaixo
+ou caso você deseje rodar esse projeto em sua maquina local, execute esses comandos a seguir
 
 Primeiro, instale as dependencia do projeto:
 
@@ -26,6 +26,6 @@ yarn dev
 
 Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-## Deploy feito na Vercel
+## Construção do peojeto
 
-[https://teste-bagy.vercel.app/](https://teste-bagy.vercel.app/)
+O que foi mais desafiador na construção do projeto sem menor sombra de dúvida foi fazer o gráfico :cold_sweat:
