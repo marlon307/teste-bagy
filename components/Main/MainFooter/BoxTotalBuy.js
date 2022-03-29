@@ -15,7 +15,7 @@ function BoxTotalBuy({ data }) {
     <div className={ style.boxtotalbuy }>
       <div className={ style.headerbox }>
         <div className={ style.primaryLine }>
-          <h2>Total Compras</h2>
+          <h2>Total de Compras</h2>
           <span>Semana</span>
         </div>
         <div className={ style.secondaryLine }>
