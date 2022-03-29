@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { gql } from '@apollo/client';
 import MainHeader from '../components/Main/MainHeader';
-import Graphy from '../components/Main/MainGrapyh';
+import Graphy from '../components/Main/MainGrapyic';
 import FooterMain from '../components/Main/MainFooter';
 import client from '../config/clientgraphql';
 

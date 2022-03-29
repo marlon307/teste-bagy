@@ -119,7 +119,7 @@ function Graphy({ dataUsers, storeId, setStoreId }) {
             </div>
           </li>
           <li>
-            <span>Total de Faturamento</span>
+            <span>Total de faturamento</span>
             <span>
               { totalBilling?.toLocaleString(
                 'pt-BR',
@@ -129,7 +129,7 @@ function Graphy({ dataUsers, storeId, setStoreId }) {
             </span>
           </li>
           <li>
-            <span>Análize Comparativa</span>
+            <span>Análize comparativa</span>
             <span data-positive={ positive }>{ positive ? 'Positivo' : 'Negativo' }</span>
           </li>
         </ul>
