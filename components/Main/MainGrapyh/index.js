@@ -1,44 +1,17 @@
 import React, {
   useState, useEffect, useCallback,
 } from 'react';
-import { gql } from '@apollo/client';
-import client from '../../../config/clientgraphql';
 import style from './style.module.scss';
 import Graphic from './Graphic';
 
-function Graphy() {
+function Graphy({ dataUsers, storeId, setStoreId }) {
   const [seconfLineActive, setSeconfLineActive] = useState(true);
-  const [dataUsers, setDataUsers] = useState([]);
   const [positive, setPositive] = useState(true);
-  const [storeId, setStoreId] = useState(0);
+  const [totalBilling, setTotalBilling] = useState(0);
 
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await client.query({
-        query: gql`
-        query {
-          data {
-            name
-            loja
-            year
-            meta
-            this_month
-            last_month
-            total_billing
-            vendas {
-              this_month
-              last_month
-            }
-          }
-        }
-      `,
-      });
-      setDataUsers(data.data);
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
+    // O cauculo esta sendo fieto com base no saldo do mês anterior. Se o valor do mês atual for
+    // inferior ao mês passado então a analize comparativa vai ser NEGTIVA
     const result = dataUsers[storeId]?.vendas.reduce((acc, { this_month, last_month }) => ({
       this_month: this_month + acc.this_month,
       last_month: last_month + acc.last_month,
@@ -49,13 +22,14 @@ function Graphy() {
     } else {
       setPositive(false);
     }
+    setTotalBilling(result?.this_month);
   }, [dataUsers, storeId]);
 
   const slectStroe = useCallback(({ target }) => {
     const { value } = target;
     const indexStore = dataUsers.findIndex(({ loja }) => loja === value);
     setStoreId(indexStore);
-  }, [dataUsers]);
+  }, [dataUsers, setStoreId]);
 
   return (
     <section className={ style.dashboard }>
@@ -65,8 +39,8 @@ function Graphy() {
         </div>
         <div className={ style.secondaryline }>
           <span>
-            {dataUsers[storeId]?.this_month}
-            {' '}
+            { dataUsers[storeId]?.this_month }
+            { ' ' }
             2022
           </span>
           <div className={ style.infographyc }>
@@ -147,7 +121,7 @@ function Graphy() {
           <li>
             <span>Total de Faturamento</span>
             <span>
-              { dataUsers[storeId]?.total_billing.toLocaleString(
+              { totalBilling?.toLocaleString(
                 'pt-BR',
                 { style: 'currency', currency: 'BRL' },
               ) }
