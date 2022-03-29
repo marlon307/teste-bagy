@@ -8,8 +8,8 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import CircleGraphic from './CircleGraphic';
-import style from './style.module.scss';
 import Tick from './Tick';
+import style from './style.module.scss';
 
 function Graphic({ data, active }) {
   const setValueLabelShart = ({ payload }) => {
@@ -51,7 +51,9 @@ function Graphic({ data, active }) {
           type="number"
           axisLine={ false }
           tickLine={ false }
+          tickCount={ 7 }
           tick={ <Tick /> }
+          tickSize={ 12 }
           sacale="sequential"
         />
         <Tooltip
